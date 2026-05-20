@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>An Important Update: Transitioning Gemini CLI to Antigravity CLI</title>
+  <meta name="description" content="Google is unifying Gemini CLI into Antigravity CLI—a faster, Go-built terminal experience for today's multi-agent workflows. Learn about Agent Skills, Hooks, Subagents, plugins, timelines for consumers and enterprise, and how to migrate.">
+  <meta name="keywords" content="Antigravity CLI, Gemini CLI, Google Antigravity, transitioning Gemini CLI, terminal AI, multi-agent development, Agent Skills, Hooks, Subagents, Antigravity plugins, Antigravity 2.0, Google I/O 2026, agent-first platform, Gemini Code Assist">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Antigravity CLI">
+  <link rel="canonical" href="https://antigravitycli.dev/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="An Important Update: Transitioning Gemini CLI to Antigravity CLI">
+  <meta property="og:description" content="Antigravity CLI is Google's premier terminal experience for multi-agent development—built in Go, sharing the same harness as Antigravity 2.0. See what's changing and how to get started.">
+  <meta property="og:url" content="https://antigravitycli.dev/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Antigravity CLI">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="An Important Update: Transitioning Gemini CLI to Antigravity CLI">
+  <meta name="twitter:description" content="Gemini CLI is becoming Antigravity CLI—faster execution, asynchronous multi-agent workflows, and a unified architecture with Antigravity 2.0.">
+
+  <link rel="icon" id="dynamic-favicon" href="data:,">
+  <link rel="apple-touch-icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Antigravity CLI",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Cross-platform",
+    "description": "Antigravity CLI is Google's agent-first terminal experience, replacing Gemini CLI for multi-agent workflows with Agent Skills, Hooks, Subagents, and Antigravity plugins.",
+    "url": "https://antigravitycli.dev/",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Available to everyone; enterprise licenses retain Gemini CLI access"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Antigravity CLI Home">
+        <canvas id="brand-canvas" width="32" height="32"></canvas>
+        <span class="nav-logo-text">Antigravity <span>CLI</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://mirofish.my/" class="nav-cta" target="_blank" rel="noopener noreferrer">Get Antigravity CLI</a></li>
+      </ul>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"/>
+          <line x1="4" y1="12" x2="20" y2="12"/>
+          <line x1="4" y1="17" x2="20" y2="17"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="hero-bg-grid"></div>
+      <div class="hero-bg-glow"></div>
+      <canvas id="hero-canvas"></canvas>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge fade-in">
+        <span class="hero-badge-dot"></span>
+        Google I/O 2026 · May 19
+      </div>
+
+      <h1 class="hero-title fade-in-up delay-1">
+        <span class="gradient">Antigravity CLI</span>
+        <span class="subtitle">Transitioning from Gemini CLI to a multi-agent terminal</span>
+      </h1>
+
+      <p class="hero-desc fade-in-up delay-2">
+        When Google shipped Gemini CLI, the goal was to bring Gemini directly into your terminal. Your workflows have outgrown those early days—you now need multiple agents communicating with each other, sharing a unified backend with the rest of your stack. Antigravity CLI is that single platform: a brand-new terminal experience inside Google Antigravity, built for today's agent-first reality.
+      </p>
+
+      <div class="hero-actions fade-in-up delay-3">
+        <a href="https://mirofish.my/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+          Get Antigravity CLI
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+        <a href="#overview" class="btn btn-secondary">Read the transition guide</a>
+      </div>
+
+      <div class="hero-meta fade-in-up delay-4">
+        <div class="hero-meta-item">Primary source<strong>Google Developers Blog · May 19, 2026</strong></div>
+        <div class="hero-meta-item">Core mechanic<strong>Multi-agent terminal + unified harness</strong></div>
+        <div class="hero-meta-item">Availability<strong>Starting today for everyone</strong></div>
+      </div>
+
+      <div class="hero-stats fade-in-up delay-4">
+        <div>
+          <div class="hero-stat-value">100K+</div>
+          <div class="hero-stat-label">GitHub Stars</div>
+        </div>
+        <div>
+          <div class="hero-stat-value">6,000</div>
+          <div class="hero-stat-label">Merged PRs</div>
+        </div>
+        <div>
+          <div class="hero-stat-value">Go</div>
+          <div class="hero-stat-label">Faster Runtime</div>
+        </div>
+        <div>
+          <div class="hero-stat-value">4</div>
+          <div class="hero-stat-label">Core Features Kept</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section loop-panel" id="loop">
+    <div class="section-header fade-in">
+      <span class="section-label">Harness snapshot</span>
+      <h2 class="section-title">Agents at work in your <span class="gradient">terminal</span></h2>
+      <p class="section-desc">
+        Antigravity CLI orchestrates multiple agents in the background—large refactors, research, and cloud provisioning without locking up your session.
+      </p>
+    </div>
+
+    <div class="loop-snapshot fade-in-up delay-1">
+      <div class="loop-snapshot-header">
+        <span>Async workflow</span>
+        <span>3 subagents running</span>
+      </div>
+      <div class="loop-snapshot-body">
+        <div class="prompt">Task: Refactor auth module and provision staging infrastructure</div>
+        <div>→ Subagent A: editing service handlers and tests in train.py</div>
+        <div>→ Subagent B: researching IAM policy changes for Cloud Run</div>
+        <div>→ Subagent C: drafting Terraform updates from grounded docs</div>
+        <div class="status">Status: Background orchestration active · Terminal session remains interactive</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section overview" id="overview">
+    <div class="section-header fade-in">
+      <span class="section-label">Overview</span>
+      <h2 class="section-title">What makes <span class="gradient">Antigravity CLI</span> the next step</h2>
+      <p class="section-desc">
+        Gemini CLI proved the terminal could be an incredible interface for agentic tasks. Antigravity CLI pours that energy into one product built for multi-agent workflows—with the features you rely on most.
+      </p>
+    </div>
+
+    <div class="overview-grid fade-in-up delay-1">
+      <div class="overview-card">
+        <h3>A unified platform, not a fork</h3>
+        <p>Google is concentrating on Google Antigravity—an agent-first development platform with a powerful server-side harness and Antigravity CLI as its terminal front door.</p>
+      </div>
+      <div class="overview-card">
+        <h3>Critical Gemini CLI features preserved</h3>
+        <p>While there won't be 1:1 feature parity on day one, Agent Skills, Hooks, Subagents, and Extensions (now Antigravity plugins) carry forward.</p>
+      </div>
+      <div class="overview-card">
+        <h3>Same jobs, better experience</h3>
+        <p>Whether you used Gemini CLI for grounded answers, scaffolding projects, or provisioning cloud infrastructure—you can still do all of that in Antigravity CLI.</p>
+      </div>
+      <div class="overview-card">
+        <h3>Built for how you work now</h3>
+        <p>Weekly releases, strong terminal UI, and community scale taught Google that your tools must share one backend with desktop, IDE, and cloud workflows.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section features" id="features">
+    <div class="section-header fade-in">
+      <span class="section-label">Improvements</span>
+      <h2 class="section-title">Focused on what <span class="gradient">matters most</span></h2>
+      <p class="section-desc">
+        Antigravity CLI keeps the spirit of Gemini CLI while delivering the performance and architecture multi-agent development demands.
+      </p>
+    </div>
+
+    <div class="features-grid fade-in-up delay-1">
+      <div class="feature-card">
+        <span class="feature-tag">Performance</span>
+        <h3>Faster execution</h3>
+        <p>Built in Go, Antigravity CLI is snappier and more responsive—so agent loops feel immediate even when work is complex.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-tag">Workflow</span>
+        <h3>Asynchronous workflows</h3>
+        <p>Orchestrate multiple agents for large-scale refactors or parallel research without blocking your terminal session.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-tag">Architecture</span>
+        <h3>Unified with Antigravity 2.0</h3>
+        <p>Shares the same agent harness as the new Antigravity desktop app—core agent improvements land everywhere you work.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-tag">Skills</span>
+        <h3>Agent Skills</h3>
+        <p>Package repeatable expertise so agents follow your conventions for reviews, deployments, or domain-specific tasks.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-tag">Automation</span>
+        <h3>Hooks &amp; Subagents</h3>
+        <p>React to events in your pipeline and delegate subtasks to specialized agents that report back to the main session.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-tag">Extensibility</span>
+        <h3>Antigravity plugins</h3>
+        <p>Former Gemini CLI Extensions become plugins—extend the CLI with tools, integrations, and custom commands you already trust.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section how-it-works" id="how-it-works">
+    <div class="section-header fade-in">
+      <span class="section-label">How it works</span>
+      <h2 class="section-title">From Gemini CLI to <span class="gradient">one harness</span></h2>
+      <p class="section-desc">
+        The transition keeps your terminal at the center while connecting it to the same agent platform that powers Antigravity 2.0.
+      </p>
+    </div>
+
+    <div class="steps-grid fade-in-up delay-1">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3>Install Antigravity CLI</h3>
+        <p>Starting today, Antigravity CLI is available to everyone—download and connect it to your Google Cloud project or personal account.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3>Migrate skills &amp; plugins</h3>
+        <p>Bring Agent Skills, Hooks, and Extensions forward. Review the technical documentation for mapping Gemini CLI config to Antigravity plugins.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3>Run multi-agent tasks</h3>
+        <p>Spawn subagents for research, coding, and infra work. Let the harness coordinate async jobs while you stay in the terminal.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <h3>Stay on one platform</h3>
+        <p>Use the same agents in Antigravity 2.0 desktop, your IDE, and the CLI—improvements to core agents propagate automatically.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section timeline" id="timeline">
+    <div class="section-header fade-in">
+      <span class="section-label">Timeline</span>
+      <h2 class="section-title">Important dates for <span class="gradient">consumers &amp; enterprise</span></h2>
+      <p class="section-desc">
+        Access paths differ depending on whether you use free Gemini Code Assist, paid consumer plans, or enterprise licenses.
+      </p>
+    </div>
+
+    <div class="timeline-grid fade-in-up delay-1">
+      <div class="timeline-card">
+        <h3>For consumers</h3>
+        <ul>
+          <li>
+            <span class="timeline-date">Starting today</span>
+            Antigravity CLI is available to everyone. Begin migrating with official technical documentation and upcoming video walkthroughs.
+          </li>
+          <li>
+            <span class="timeline-date">June 18, 2026</span>
+            Gemini CLI and Gemini Code Assist IDE extensions stop serving requests for Google AI Pro and Ultra, and for free Gemini Code Assist for individuals.
+          </li>
+          <li>
+            <span class="timeline-date">GitHub assist</span>
+            On June 18, 2026, no new Gemini Code Assist for GitHub installations on organizations; requests stop in the following weeks.
+          </li>
+        </ul>
+      </div>
+      <div class="timeline-card">
+        <h3>For enterprise customers</h3>
+        <ul>
+          <li>
+            <span class="timeline-date">Unchanged access</span>
+            Organizations on Gemini Code Assist Standard or Enterprise, or Gemini Code Assist for GitHub through Google Cloud, keep existing access.
+          </li>
+          <li>
+            <span class="timeline-date">Continued support</span>
+            Google continues supporting Gemini CLI and Gemini Code Assist with the latest Gemini models and updates for licensed users.
+          </li>
+          <li>
+            <span class="timeline-date">Try Antigravity now</span>
+            Enterprise teams can use Antigravity CLI today with Google Cloud projects while evaluating the broader Antigravity platform.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pillars" id="pillars">
+    <div class="section-header fade-in">
+      <span class="section-label">Why it matters</span>
+      <h2 class="section-title">Your terminal tools need a <span class="gradient">shared backend</span></h2>
+      <p class="section-desc">
+        Listening to millions of users—with weekly releases and a thriving open-source community—made one thing clear: serve one multi-agent platform instead of splitting effort.
+      </p>
+    </div>
+
+    <div class="pillars-grid fade-in-up delay-1">
+      <div class="pillar-card">
+        <div class="pillar-label">Community</div>
+        <h3>Proven at scale</h3>
+        <p>Over 100,000 GitHub stars, 6,000 merged pull requests, and hundreds of contributors shaped what Antigravity CLI must preserve.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-label">Agents</div>
+        <h3>Multi-agent by default</h3>
+        <p>Split complex problems across communicating agents instead of forcing a single thread to do everything sequentially.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-label">Platform</div>
+        <h3>Agent-first development</h3>
+        <p>Antigravity unifies terminal, desktop, and cloud so the harness—not individual tools—becomes where improvements land first.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section deep-dive" id="deep-dive">
+    <div class="section-header fade-in">
+      <span class="section-label">Deep dive</span>
+      <h2 class="section-title">What Is Antigravity CLI? How the <span class="gradient">Gemini CLI transition</span> works</h2>
+      <p class="section-desc">
+        A clear explanation of the announcement, what changes for your workflow, and where to verify details yourself.
+      </p>
+    </div>
+
+    <div class="article-card fade-in-up delay-1">
+      <p class="article-meta">Explainer · 4 min read · May 19, 2026</p>
+      <h3>From terminal magic to multi-agent reality</h3>
+      <p>
+        Google shipped Gemini CLI to put Gemini in your terminal. The community showed that agentic terminals work—and that workflows now need multiple agents, shared context, and the same harness as IDE and desktop tools. Antigravity CLI is the answer: faster Go runtime, async orchestration, and feature continuity (Skills, Hooks, Subagents, plugins) inside Google Antigravity. Consumers on free or Pro/Ultra plans should migrate before June 18, 2026; enterprise licenses retain Gemini CLI access while teams pilot Antigravity on Cloud.
+      </p>
+      <a href="https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+        Read the official announcement
+      </a>
+    </div>
+  </section>
+
+  <section class="section sources" id="sources">
+    <div class="section-header fade-in">
+      <span class="section-label">Primary sources</span>
+      <h2 class="section-title">Every claim is <span class="gradient">source-backed</span></h2>
+      <p class="section-desc">
+        Verify timelines, features, and migration steps directly from Google’s announcement and Antigravity documentation.
+      </p>
+    </div>
+
+    <div class="sources-grid fade-in-up delay-1">
+      <div class="source-card">
+        <h3>Google Developers Blog</h3>
+        <p>The May 19, 2026 post announcing the transition from Gemini CLI to Antigravity CLI, including consumer and enterprise timelines.</p>
+        <a href="https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/" class="source-link" target="_blank" rel="noopener noreferrer">Read announcement</a>
+      </div>
+      <div class="source-card">
+        <h3>Antigravity documentation</h3>
+        <p>Technical migration guides, download links, and harness documentation for Antigravity CLI and Antigravity 2.0.</p>
+        <a href="https://antigravity.google/docs/gcli-migration" class="source-link" target="_blank" rel="noopener noreferrer">Migration docs</a>
+      </div>
+      <div class="source-card">
+        <h3>Community forum</h3>
+        <p>Request features, report issues, and share feedback during the transition on the Antigravity CLI GitHub community.</p>
+        <a href="https://github.com/google-antigravity/antigravity-cli" class="source-link" target="_blank" rel="noopener noreferrer">Join the forum</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq" id="faq">
+    <div class="section-header fade-in">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">The fastest answers about <span class="gradient">Antigravity CLI</span></h2>
+      <p class="section-desc">Start here if you need the timeline, preserved features, or what happens to Gemini CLI under enterprise licenses.</p>
+    </div>
+
+    <div class="faq-list fade-in-up delay-1">
+      <div class="faq-item open">
+        <button class="faq-question" type="button">
+          What is happening to Gemini CLI?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          Google is unifying efforts into Google Antigravity and Antigravity CLI. For consumers on Google AI Pro, Ultra, or free Gemini Code Assist for individuals, Gemini CLI and related IDE extensions stop serving requests on June 18, 2026. Enterprise customers with Standard or Enterprise licenses retain access to Gemini CLI with continued model updates.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          Which Gemini CLI features carry over to Antigravity CLI?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          The most critical capabilities remain: Agent Skills, Hooks, Subagents, and Extensions—now called Antigravity plugins. There may not be full 1:1 parity immediately, but grounded Q&amp;A, project scaffolding, and cloud provisioning workflows are still supported.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          Why is Antigravity CLI built in Go?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          Google chose Go for faster execution and a more responsive terminal experience—important when orchestrating multiple agents and long-running background tasks without freezing your shell.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          How does Antigravity CLI relate to Antigravity 2.0?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          Antigravity CLI shares the same agent harness as Antigravity 2.0, the new Antigravity desktop application. Improvements to core agents apply automatically across terminal, desktop, and other surfaces on the platform.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          When should individual users migrate?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          Antigravity CLI is available starting today. Individual and Pro/Ultra users should begin migration now using Google's technical documentation, ahead of the June 18, 2026 cutoff for Gemini CLI and Gemini Code Assist for individuals.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          Can enterprise teams still use Gemini CLI API keys?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          Yes. Gemini CLI remains accessible via paid Gemini and Gemini Enterprise Agent Platform API keys for organizations with the appropriate licenses, while teams can also pilot Antigravity CLI on Google Cloud projects.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          Where can I request missing features during the transition?
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          Google welcomes feedback in the Antigravity CLI community forum on GitHub—especially for capabilities you relied on in Gemini CLI that you want prioritized in Antigravity plugins or core agents.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-section">
+    <div class="section-header fade-in">
+      <span class="section-label">Get started</span>
+      <h2 class="section-title">Build the future with <span class="gradient">Antigravity CLI</span></h2>
+      <p class="section-desc">
+        Download today, migrate your skills and plugins, and join the agent-first platform Google is investing in for multi-agent development.
+      </p>
+    </div>
+
+    <div class="fade-in-up delay-1">
+      <a href="https://mirofish.my/" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="padding: 18px 44px;">
+        Get Antigravity CLI
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </a>
+    </div>
+
+    <p class="disclaimer fade-in-up delay-2">
+      Timeline and licensing details reflect Google's May 19, 2026 announcement. Consumer access to Gemini CLI ends June 18, 2026 for listed plans; enterprise terms may differ. Explore Google I/O 2026 updates for the full Antigravity roadmap.
+    </p>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        Antigravity CLI &mdash; Transitioning Gemini CLI to Google's agent-first terminal
+      </div>
+      <ul class="footer-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="cavas-design.js"></script>
+  <script>
+    const mobileBtn = document.getElementById("mobileMenuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    mobileBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("open");
+    });
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => navLinks.classList.remove("open"));
+    });
+
+    document.querySelectorAll(".faq-question").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".faq-item");
+        const wasOpen = item.classList.contains("open");
+        document.querySelectorAll(".faq-item").forEach((el) => el.classList.remove("open"));
+        if (!wasOpen) item.classList.add("open");
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = "running";
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll(".fade-in, .fade-in-up").forEach((el) => {
+      el.style.animationPlayState = "paused";
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
